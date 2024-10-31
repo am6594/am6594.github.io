@@ -1,0 +1,45 @@
+---
+title: "About me"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+# Academic Experience:
+Master of Science, Mailman School of Public Health, Columbia University, New York, United States 
+
+• Concentration: Public Health Data Science
+
+
+Bachelor of Commerce, Smith School of Business, Queen’s University, Kingston, Canada
+
+• Queen's University Excellence Scholarship (2020) and D.I. McLeod Dean's List Scholarship (2021 & 2022)
+
+• Cumulative GPA: 4.0/4.3
+
+
+Guanghua Visiting Program, Guanghua School of Management, Peking University, Beijing, China
+
+• Chinese Government Scholarship (2022)
+
+• Average Grade: 86.2/100
+
+
+# Professional Experience:
+Biostatistics Intern, Luca Healthcare, Shanghai, China
+
+• Analyzed raw datasets to evaluate the performance and feasibility of the targets using a variety of statistical approaches in R and Python
+
+• Collaborated with the project team to interpret data results, derive meaningful insights, and present findings to the client
+
+• Assisted in writing the statistical analysis report, ensuring the accuracy and clarity of the findings
+
+Digital Consulting Intern, Deloitte, Hong Kong, China 2023.07 – 2023.09
+
+• Assist the team to work against the project plan to ensure a superior client experience
+
+• Contribute towards the technical design of technical solutions based on client requirements and other constraints
+
+• Perform software configuration, development, testing, implementation, maintenance support, user training, and prepare system documentation
+
+• Present strong analytical and problem-solving skills with a high commitment to quality client service and good communication skills in English and Mandarin

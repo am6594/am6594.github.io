@@ -1,0 +1,17 @@
+---
+title: "Homework 4"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+This is the landing page. 
+
+There are three links here. 
+
+[About me](about.html)
+
+[Plotly](plotly.html)
+
+[Dashboard](dashboard.html)

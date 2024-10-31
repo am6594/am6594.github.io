@@ -1,0 +1,83 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+library(flexdashboard)
+```
+
+```{r}
+# Load the NY NOAA dataset
+data("ny_noaa")
+
+# Perform data cleaning and sampling (e.g., sampling 10,000 rows for speed)
+ny_noaa_sample <- ny_noaa %>%
+  filter(!is.na(prcp), !is.na(tmax), !is.na(tmin)) %>%
+  sample_n(10000)
+
+# Create a season variable and box plot
+ny_noaa_sample <- ny_noaa_sample %>%
+  mutate(season = case_when(
+    month(date) %in% 3:5 ~ "Spring",
+    month(date) %in% 6:8 ~ "Summer",
+    month(date) %in% 9:11 ~ "Fall",
+    TRUE ~ "Winter"
+  ))
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+# Create a scatter plot of temperature vs precipitation
+plot_scatter <- ny_noaa_sample %>%
+  plot_ly(x = ~tmax, y = ~prcp, type = "scatter", mode = "markers", 
+          marker = list(color = 'rgba(152, 0, 0, .8)', size = 3)) %>%
+  layout(title = "Scatter Plot of Max Temperature vs Precipitation",
+         xaxis = list(title = "Max Temperature (°C)"),
+         yaxis = list(title = "Precipitation (mm)"))
+
+plot_scatter
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+# Histogram of daily precipitation
+plot_hist <- ny_noaa_sample %>%
+  plot_ly(x = ~prcp, type = "histogram") %>%
+  layout(title = "Histogram of Daily Precipitation",
+         xaxis = list(title = "Precipitation (mm)"),
+         yaxis = list(title = "Frequency"))
+
+plot_hist
+```
+
+### Chart C
+
+```{r}
+# Box plot of temperature by season
+plot_box <- ny_noaa_sample %>%
+  plot_ly(x = ~season, y = ~tmax, type = "box", color = ~season) %>%
+  layout(title = "Box Plot of Max Temperature by Season",
+         xaxis = list(title = "Season"),
+         yaxis = list(title = "Max Temperature (°C)"))
+
+plot_box
+
+```
+
