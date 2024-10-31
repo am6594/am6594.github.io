@@ -24,7 +24,7 @@ ny_noaa_sample <- ny_noaa %>%
   filter(!is.na(prcp), !is.na(tmax), !is.na(tmin)) %>%
   sample_n(10000)
 
-# Create a season variable and box plot
+# Create a season variable
 ny_noaa_sample <- ny_noaa_sample %>%
   mutate(season = case_when(
     month(date) %in% 3:5 ~ "Spring",
@@ -40,7 +40,7 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-# Create a scatter plot of temperature vs precipitation
+# Scatter Plot: Temperature vs precipitation
 plot_scatter <- ny_noaa_sample %>%
   plot_ly(x = ~tmax, y = ~prcp, type = "scatter", mode = "markers", 
           marker = list(color = 'rgba(152, 0, 0, .8)', size = 3)) %>%

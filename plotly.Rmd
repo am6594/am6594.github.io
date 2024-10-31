@@ -7,6 +7,7 @@ output:
 ---
 
 ```{r}
+# Load necessary libraries
 library(tidyverse)
 library(p8105.datasets)
 library(plotly)
@@ -16,7 +17,7 @@ library(plotly)
 # Load the NY NOAA dataset
 data("ny_noaa")
 
-# Perform data cleaning and sampling (e.g., sampling 10,000 rows for speed)
+# Data cleaning and sampling
 ny_noaa_sample <- ny_noaa %>%
   filter(!is.na(prcp), !is.na(tmax), !is.na(tmin)) %>%
   sample_n(10000)
@@ -24,7 +25,7 @@ ny_noaa_sample <- ny_noaa %>%
 
 
 ```{r}
-# Create a scatter plot of temperature vs precipitation
+# Scatter Plot: Temperature vs Precipitation
 plot_scatter <- ny_noaa_sample %>%
   plot_ly(x = ~tmax, y = ~prcp, type = "scatter", mode = "markers", 
           marker = list(color = 'rgba(152, 0, 0, .8)', size = 3)) %>%
@@ -36,7 +37,7 @@ plot_scatter
 ```
 
 ```{r}
-# Histogram of daily precipitation
+# Histogram for daily precipitation
 plot_hist <- ny_noaa_sample %>%
   plot_ly(x = ~prcp, type = "histogram") %>%
   layout(title = "Histogram of Daily Precipitation",
@@ -48,7 +49,7 @@ plot_hist
 ```
 
 ```{r}
-# Create a season variable and box plot
+# Create the season variable
 ny_noaa_sample <- ny_noaa_sample %>%
   mutate(season = case_when(
     month(date) %in% 3:5 ~ "Spring",
